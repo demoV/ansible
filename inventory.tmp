@@ -1,0 +1,12 @@
+
+foo:
+  one: 192.168.33.10
+  field2: two	
+
+[vag_box]
+foo[one] ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+
+
+[myhosts]
+localhost ansible_connection=local
+192.168.33.10 ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
