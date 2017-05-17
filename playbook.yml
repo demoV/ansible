@@ -1,46 +1,20 @@
 ---
-- hosts: vag_box,other_box
-  tasks:
-    - name: Adding NodeJs Repo.
-      yum_repository:
-        name: nodejs
-        state: present
-        description: Node Repo
-        baseurl: https://rpm.nodesource.com/pub_7.x/el/6/x86_64/
-        gpgcheck: no
-      become: yes
-  
 - hosts: vag_box
   vars_files:
-    - config.yml
+    - config_vag_box.yml  
   tasks:
-    - name: Install Nginx and NodeJs.
-      yum: name={{item}} state=present
-      with_items:
-      - nginx
-      - "nodejs-{{vag_box_node_version}}"
-      become: yes
-
-    - name: Change the default config file with dummyDefault.conf.
-      copy:
-        src: "./dummyDefault.conf"  
-        dest: "/etc/nginx/conf.d/default.conf"
-      become: yes
-
-    - name: Start Nginx.
-      service: 
+    - name: Include nodejs Role
+      include_role:
+        name: nodejs
+    - name: Include nginx Role
+      include_role:
         name: nginx
-        state: restarted
-        enabled: yes  
-      become: yes
 
 - hosts: other_box
+  vars_files:
+    - config_other_box.yml  
   tasks:
-    - name: Install NodeJs.
-      vars:
-        node_version: 7.7.2
-      yum: 
-        name: "nodejs-{{node_version}}"
-        state: present
-      become: yes
+    - name: Include nodejs Role
+      include_role:
+        name: nodejs
   

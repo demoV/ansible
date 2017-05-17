@@ -7,4 +7,4 @@
 
 [myhosts]
 localhost ansible_connection=local
-192.168.33.10 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/Users/lpandey/step/may/devops/.vagrant/machines/default/virtualbox/private_ke
+192.168.33.10 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/Users/lpandey/step/may/devops/.vagrant/machines/default/virtualbox/private_key
