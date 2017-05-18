@@ -7,7 +7,7 @@
     gpgcheck: no
   become: yes
 
-- name: Install NodeJs.
+- name: Install NodeJs {{node_version}}.
   yum: 
     name: nodejs-{{node_version}}
     state: present

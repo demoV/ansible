@@ -1,18 +1,13 @@
 ---
 - hosts: vag_box
-  tasks:
-    - include_vars: config_vag_box.yml
-    - name: Include nodejs Role
-      include_role:
-        name: nodejs
-    - name: Include nginx Role
-      include_role:
-        name: nginx
+  vars_files: 
+    - config_vag_box.yml
+  roles:
+    - nodejs
+    - nginx
 
 - hosts: other_box
-  tasks:
-    - include_vars: config_other_box.yml
-    - name: Include nodejs Role
-      include_role:
-        name: nodejs
-  
+  vars_files: 
+    - config_other_box.yml
+  roles:
+    - nodejs
