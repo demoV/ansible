@@ -1,13 +1,13 @@
 ---
 - hosts: vag_box
   vars_files: 
-    - config_vag_box.yml
+    - configs/config_vag_box.yml
   roles:
     - nodejs
     - nginx
 
 - hosts: other_box
   vars_files: 
-    - config_other_box.yml
+    - configs/config_other_box.yml
   roles:
     - nodejs
